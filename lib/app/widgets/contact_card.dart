@@ -33,31 +33,35 @@ class ContactCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    style: const TextStyle(
-                      color: Colors.black,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    'Name: $name'),
+                  'Name: $name',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 Text(
-                    style: const TextStyle(
-                      color: Colors.black,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    'Email: $email'),
+                  'Email: $email',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 Text(
-                    style: const TextStyle(
-                      color: Colors.black,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    'Address: $address'),
+                  'Address: $address',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 Text(
                     style: const TextStyle(color: Colors.black), 'City: $city'),
                 Text(
-                    style: const TextStyle(
-                      color: Colors.black,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    'Country: $country'),
+                  'Country: $country',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
           ],

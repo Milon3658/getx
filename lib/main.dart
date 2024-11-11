@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:testig_package/app/routes/AppRoutes.dart';
+import 'package:testig_package/app/styles/theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +19,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: const Color(0x9f4376f8),
-      ),
+      darkTheme: darkTheme,
+      theme: lightTheme,
       initialRoute: AppRoutes.home,
       getPages: AppRoutes.routes,
     );
