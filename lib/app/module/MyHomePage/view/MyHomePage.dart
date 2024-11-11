@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:testig_package/app/widgets/contact_card.dart';
 import '../controller/controller.dart';
 import 'package:flutter/material.dart';
 
@@ -9,58 +10,57 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home View'),
+        title: const Text(
+          'Users',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.amber,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.refresh,
+                color: Colors.black,
+              )),
+        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Obx(() => Text(
-                  'Device Id: ${controller.deviceId.toInt()}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            Obx(() => Text(
-                  'Mac Address: ${controller.macAddress}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            const SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  controller.incressDeviceId();
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                  disabledForegroundColor: Colors.grey.withOpacity(0.38),
-                ),
-                child: const Text('Ingress Device Id'),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () {
-                  controller.incressMacAddress();
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                  disabledForegroundColor: Colors.grey.withOpacity(0.38),
-                ),
-                child: const Text('Ingress Mac Add'),
-              ),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(children: [
+            FutureBuilder(
+                future: controller.fetchUser(),
+                builder: (ctx, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.amber,
+                      ),
+                    );
+                  } else {
+                    if (snapshot.hasError) {
+                      return const Center(child: Text('Error'));
+                    } else {
+                      return ListView.builder(
+                        itemCount: snapshot.data?.profiles?.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (ctx, index) {
+                          return ContactCard(
+                            name: snapshot.data?.profiles?[index].name ?? '',
+                            email: snapshot.data?.profiles?[index].email ?? '',
+                            address:
+                                snapshot.data?.profiles?[index].address ?? '',
+                            city: snapshot.data?.profiles?[index].city ?? '',
+                            country:
+                                snapshot.data?.profiles?[index].country ?? '',
+                          );
+                        },
+                      );
+                    }
+                  }
+                })
+          ]),
         ),
       ),
     );
