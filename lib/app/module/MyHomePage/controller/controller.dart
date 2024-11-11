@@ -21,8 +21,7 @@ class HomeController extends GetxController {
     isLoading.value = true;
     final response = await http.get(Uri.parse(baseUrl));
     try {
-      final data = ProductModel.fromJson(
-          jsonDecode(response.body) as Map<String, dynamic>);
+      final data = ProductModel.fromJson(jsonDecode(response.body));
       products.value = data;
       if (kDebugMode) {
         print(data);
