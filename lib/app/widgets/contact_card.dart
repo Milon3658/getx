@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:testig_package/app/data/model/ContactModel.dart';
+import 'package:testig_package/app/module/UserDetails/controller/user_details_controller.dart';
 
 class ContactCard extends StatelessWidget {
   final String name;
@@ -18,53 +21,65 @@ class ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            const CircleAvatar(
-              radius: 30,
-              child: Text('A'),
-            ),
-            const SizedBox(width: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Name: $name',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    overflow: TextOverflow.ellipsis,
+    return InkWell(
+      onTap: () {
+        Get.toNamed('/user_details', arguments: {
+          'name': name,
+          'email': email,
+          'address': address,
+          'city': city,
+          'country': country,
+        });
+      },
+      child: Card(
+        elevation: 5,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              const CircleAvatar(
+                radius: 30,
+                child: Text('A'),
+              ),
+              const SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Name: $name',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-                Text(
-                  'Email: $email',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    overflow: TextOverflow.ellipsis,
+                  Text(
+                    'Email: $email',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-                Text(
-                  'Address: $address',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    overflow: TextOverflow.ellipsis,
+                  Text(
+                    'Address: $address',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-                Text(
-                    style: const TextStyle(color: Colors.black), 'City: $city'),
-                Text(
-                  'Country: $country',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    overflow: TextOverflow.ellipsis,
+                  Text(
+                      style: const TextStyle(color: Colors.black),
+                      'City: $city'),
+                  Text(
+                    'Country: $country',
+                    style: const TextStyle(
+                      color: Colors.black,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
