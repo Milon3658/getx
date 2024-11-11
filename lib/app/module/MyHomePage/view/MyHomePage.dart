@@ -18,6 +18,7 @@ class HomeView extends GetView<HomeController> {
         actions: [
           IconButton(
               onPressed: () {
+                controller.contacts.value?.profiles?.clear();
                 controller.fetchUser();
               },
               icon: const Icon(
