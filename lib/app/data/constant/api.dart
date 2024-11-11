@@ -1,1 +1,1 @@
-const String baseUrl = 'https://api.faker.codejet.dev/random-profiles';
+const String baseUrl = 'https://dummyjson.com/products';

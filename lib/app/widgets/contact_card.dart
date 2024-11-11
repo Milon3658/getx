@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testig_package/app/data/model/ContactModel.dart';
-import 'package:testig_package/app/module/UserDetails/controller/user_details_controller.dart';
 
 class ContactCard extends StatelessWidget {
   final String name;

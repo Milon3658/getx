@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:testig_package/app/data/model/ContactModel.dart';
+import 'package:testig_package/app/data/model/ProductModel.dart';
 
 class UserDetailsController extends GetxController {
-  Rx<ContactModel?> userDetails = Rx(null);
+  Rx<ProductModel?> userDetails = Rx(null);
 
   @override
   void onInit() {
